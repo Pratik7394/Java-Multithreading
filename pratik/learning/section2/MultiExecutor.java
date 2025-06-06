@@ -1,4 +1,4 @@
-package pratik.learning.module1;
+package pratik.learning.section2;
 import java.util.*;
 
 
