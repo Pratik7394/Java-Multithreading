@@ -7,16 +7,17 @@ import java.util.List;
 
 public class ThreadJoinDemo {
     public static void main(String[] args) throws InterruptedException {
-        List<Long> inputNumbers = Arrays.asList(0L, 3435L, 35435L, 2324L, 4656L, 23L, 5566L);
+        List<Long> inputNumbers = Arrays.asList(10000000L, 3435L, 35435L, 2324L, 4656L, 23L, 5566L);
         List<FactorialThread> threads = new ArrayList<>();
         for(long inputNum : inputNumbers) {
             threads.add(new FactorialThread(inputNum));
         }
         for(Thread thread : threads) {
+            thread.setDaemon(true);
             thread.start();
         }
         for(Thread thread : threads) {
-            thread.join();
+            thread.join(2000);
         }
         for(int i = 0; i < inputNumbers.size(); i++) {
             FactorialThread factorialThread = threads.get(i);
