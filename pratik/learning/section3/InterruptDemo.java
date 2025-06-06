@@ -14,6 +14,8 @@ public class InterruptDemo {
         } else {
             thread = new Thread(new LongComputationTask(new BigInteger("2"), new BigInteger("1000000000000")));
         }
+        boolean isDaemon = thread.isDaemon();
+        if(!isDaemon) thread.setDaemon(!isDaemon);
         thread.start();
         thread.interrupt();
     }
